@@ -114,3 +114,34 @@ export function precedenceOf(x) {
     return -1;
   }
 }
+
+export function hasPrecedence(operator1, operator2) {
+  if (isOpenBracket(operator2) || isCloseBracket(operator2)) {
+    return false;
+  }
+  if ((operator1 == '*' || operator1 == '/') && (operator2 == '+' || operator2 == '-')) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+export function applyOperator(operator, operand2, operand1) {
+  switch(operator) {
+    case '+':
+      return operand1 + operand2;
+    case '-':
+      return operand1 - operand2;
+    case '*':
+      return operand1 * operand2;
+    case '/':
+      if(operand2 === 0) {
+        return undefined;
+      } 
+      return parseInt(operand1 / operand2, 10);
+    case '^': {
+      return operand1 ** operand2;
+    }
+  }
+  return undefined;
+}
