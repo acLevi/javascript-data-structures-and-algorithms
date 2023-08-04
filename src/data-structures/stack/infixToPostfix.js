@@ -8,7 +8,7 @@ import Stack from "./stack.js";
  * @returns {String}
  */
 export default function infixToPostFix(expression) {
-    expression = expression.replace(/\s/g, ''); // Remove spaces from expression
+    expression = expression.replace(/\s/g, ''); // Remove white spaces from expression
 
     if (!areBracketBalanced(expression)) {
         return false;

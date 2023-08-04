@@ -97,7 +97,7 @@ export function isOperator(x) {
 }
 
 export function isOperand(x) {
-  if ((x >= 'a' && x <= 'z') || (x >= 'A' && x <= 'Z') || (x => '0' && x <= '9') && !isBracket(x) && !isOperator(x)) {
+  if ((x >= 'a' && x <= 'z') || (x >= 'A' && x <= 'Z') || (x => '0' && x <= '9') && !isBracket(x) && !isOperator(x) && x !== ' ') {
     return true;
   }
   return false

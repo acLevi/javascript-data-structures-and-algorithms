@@ -24,11 +24,11 @@ function evaluate(expression) {
 
         // Current toke is a number,
         // push it ot stack for numbers
-        if (tokens[i] >= '0' && tokens[i] <= '9') {
+        if (isOperand(tokens[i])) {
             let numBuff = "";
 
             // There may be more than one digits in number
-            while (i < tokens.length && tokens[i] >= '0' && tokens[i] <= '9') {
+            while (i < tokens.length && isOperand(tokens[i])) {
                 numBuff = numBuff + tokens[i++];
             }
             values.push(parseInt(numBuff, 10));
