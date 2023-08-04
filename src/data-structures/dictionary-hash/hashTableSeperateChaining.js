@@ -1,6 +1,6 @@
-import { defaultToString } from "../util.js";
-import { ValuePair } from "../../models/valuePair.js";
-import { LinkedList } from "../06-linked-list/linkedList.js";
+import { defaultToString } from "../../util.js";
+import { ValuePair } from "../models/valuePair.js";
+import LinkedList from "../linked-list/linkedList.js";
 
 class HashTableSeperateChaining {
   constructor(toStrFn = defaultToString) {

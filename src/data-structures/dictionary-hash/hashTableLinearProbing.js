@@ -1,5 +1,5 @@
-import { defaultToString } from "../util.js";
-import { ValuePair } from "../../models/valuePair.js";
+import { defaultToString } from "../../util.js";
+import { ValuePair } from "../models/valuePair.js";
 
 class hashTableLinearProbing {
   constructor(toStrFn = defaultToString) {
