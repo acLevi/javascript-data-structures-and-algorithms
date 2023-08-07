@@ -4,8 +4,8 @@ import Stack from "./stack.js";
 
 /**
  * Convert Infix expression to Postfix expression
- * @param {String} expression 
- * @returns {String}
+ * @param {String} expression Infix Expression
+ * @returns {String} Postfix expression
  */
 export default function infixToPostFix(expression) {
     expression = expression.replace(/\s/g, ''); // Remove white spaces from expression

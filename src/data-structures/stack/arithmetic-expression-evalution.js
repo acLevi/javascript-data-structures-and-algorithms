@@ -4,8 +4,8 @@ import { applyOperator, hasPrecedence, isCloseBracket, isOpenBracket, isOperand,
 /**
  * Function to evaluate a given expression where tokens
  * are separet by space
- * @param {String} expression 
- * @returns {Number}
+ * @param {String} expression Infix Expression
+ * @returns {Number} Result of expression
  */
 function evaluate(expression) {
     let tokens = expression.split('');
