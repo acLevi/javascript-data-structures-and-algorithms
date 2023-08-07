@@ -4,7 +4,7 @@ import { applyOperator, hasPrecedence, isCloseBracket, isOpenBracket, isOperand,
 /**
  * Function to evaluate a given expression where tokens
  * are separet by space
- * @param {string} expression 
+ * @param {String} expression 
  * @returns {Number}
  */
 function evaluate(expression) {

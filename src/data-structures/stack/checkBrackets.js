@@ -3,8 +3,8 @@ import Stack from "./stack.js";
 
 /**
  * Check if brackets are balanced
- * @param {string} expression
- * @return {boolean}
+ * @param {String} expression
+ * @return {Boolean}
  */
 export default function areBracketBalanced(expression) {
   let stack = new Stack();
