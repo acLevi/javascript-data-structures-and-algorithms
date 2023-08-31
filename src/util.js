@@ -15,6 +15,10 @@ export function defaultCompare(a, b) {
   return a < b ? Compare.LESS_THAN : Compare.BIGGER_THAN; // {2}
 }
 
+export function reverseCompare(compareFn) {
+  return (a, b) => compareFn(b, a);
+}
+
 export function defaultToString(item) {
   if (item === null) {
     return "NULL";
@@ -144,4 +148,8 @@ export function applyOperator(operator, operand2, operand1) {
     }
   }
   return undefined;
+}
+
+export function swap(array, a, b) {
+  [array[a], array[b]] = [array[b], array[a]];
 }

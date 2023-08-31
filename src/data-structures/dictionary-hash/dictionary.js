@@ -1,11 +1,10 @@
 import { defaultToString } from "../../util.js";
 import { ValuePair } from "../models/valuePair.js";
 
-
 export default class Dictionary {
   constructor(toStrFn = defaultToString) {
-    this.toStrFn = toStrFn; // {1}
-    this.table = {}; // {2}
+    this.toStrFn = toStrFn;
+    this.table = {};
   }
 
   hasKey(key) {
@@ -13,9 +12,9 @@ export default class Dictionary {
   }
 
   set(key, value) {
-    if (key != null && key != undefined) { // {1}
+    if (key != null && key != undefined) {
       const tableKey = this.toStrFn(key);
-      this.table[tableKey] = new ValuePair(key, value); // {2}
+      this.table[tableKey] = new ValuePair(key, value);
       return true;
     }
     return false;
@@ -30,8 +29,8 @@ export default class Dictionary {
   }
 
   get(key) {
-    const valuePairs = this.table[this.toStrFn(key)]; // {1}
-    return valuePairs == null ? undefined : valuePairs.value; // {2}
+    const valuePairs = this.table[this.toStrFn(key)];
+    return valuePairs == null ? undefined : valuePairs.value;
   }
 
   keyValues() {
@@ -40,16 +39,16 @@ export default class Dictionary {
 
   keyValuesLegacy() {
     const valuePairs = [];
-    for (const k in this.table) { // {1}
+    for (const k in this.table) {
       if (this.hasKey(k)) {
-        valuePairs.push(this.table[k]); // {2}
+        valuePairs.push(this.table[k]);
       }
     }
     return valuePairs;
   }
 
   keys() {
-    return this.keyValues().map(valuePairs => valuePairs.key);
+    return this.keyValues().map((valuePairs) => valuePairs.key);
   }
 
   keysLegacy() {
@@ -62,16 +61,16 @@ export default class Dictionary {
   }
 
   values() {
-    return this.keyValues().map(valuePair => valuePair.value);
+    return this.keyValues().map((valuePair) => valuePair.value);
   }
 
   forEach(callbackFn) {
-    const valuePairs = this.keyValues(); // {1}
-    for (let i = 0; i < valuePairs.length; i++) { // {2}
-      const result = callbackFn(valuePairs[i].key, valuePairs[i].value); // {3}
+    const valuePairs = this.keyValues();
+    for (let i = 0; i < valuePairs.length; i++) {
+      const result = callbackFn(valuePairs[i].key, valuePairs[i].value);
       if (result === false) {
-        break // {4}
-      } 
+        break;
+      }
     }
   }
 
@@ -89,30 +88,13 @@ export default class Dictionary {
 
   toString() {
     if (this.isEmpty()) {
-      return '';
+      return "";
     }
     const valuePairs = this.keyValues();
-    let objString = `${valuePairs[0].toString()}`; // {1}
+    let objString = `${valuePairs[0].toString()}`;
     for (let i = 1; i < valuePairs.length; i++) {
-      objString = `${objString}, ${valuePairs[i].toString()}`
+      objString = `${objString}, ${valuePairs[i].toString()}`;
     }
-    return objString; // {3}
+    return objString;
   }
 }
-
-const dictionary = new Dictionary();
-dictionary.set('Gandalf', 'gandalf@email.com');
-dictionary.set('John', 'johnsow@email.com');
-dictionary.set('Tyrion', 'tyrion@email.com');
-console.log(dictionary.hasKey('Gandalf'));
-console.log(dictionary.size());
-console.log(dictionary.keys());
-console.log(dictionary.values());
-console.log(dictionary.get('Tyrion'));
-dictionary.remove('John');
-console.log(dictionary.keys());
-console.log(dictionary.values());
-console.log(dictionary.keyValues());
-dictionary.forEach((k, v) => {
-  console.log('forEach: ', `key: ${k}, value: ${v}`);
-});
