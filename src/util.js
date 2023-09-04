@@ -1,3 +1,5 @@
+export const DOES_NOT_EXIST = -1;
+
 export function defaultEquals(a, b) {
   return a === b;
 }
@@ -5,6 +7,7 @@ export function defaultEquals(a, b) {
 export const Compare = {
   LESS_THAN: -1,
   BIGGER_THAN: 1,
+  EQUALS: 0
 };
 
 export function defaultCompare(a, b) {
@@ -13,6 +16,21 @@ export function defaultCompare(a, b) {
     return 0;
   }
   return a < b ? Compare.LESS_THAN : Compare.BIGGER_THAN; // {2}
+}
+
+export function lesserOrEquals(a, b, compareFn) {
+  const comp = compareFn(a, b);
+  return comp === Compare.LESS_THAN || comp === Compare.EQUALS;
+}
+
+
+export function biggerOrEquals(a, b, compareFn) {
+  const comp = compareFn(a, b);
+  return comp = Compare.BIGGER_THAN || comp === Compare.EQUALS;
+}
+
+export function defaultDiff(a, b) {
+  return Number(a) - Number(b);
 }
 
 export function reverseCompare(compareFn) {
@@ -28,6 +46,10 @@ export function defaultToString(item) {
     return `${item}`;
   }
   return item.toString(); // {1}
+}
+
+export function swap(array, a, b) {
+  [array[a], array[b]] = [array[b], array[a]];
 }
 
 export function isOpenBracket(char) {
@@ -148,8 +170,4 @@ export function applyOperator(operator, operand2, operand1) {
     }
   }
   return undefined;
-}
-
-export function swap(array, a, b) {
-  [array[a], array[b]] = [array[b], array[a]];
 }
