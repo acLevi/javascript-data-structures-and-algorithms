@@ -4,4 +4,4 @@ function shuffle(array) {
     swap(array, i, randomIndex);
   }
   return array;
-}
+  }
